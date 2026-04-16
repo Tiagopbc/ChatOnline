@@ -1,23 +1,26 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  const [name, setName] = useState('');
-  const [roomCode, setRoomCode] = useState('');
+  const [nome, setNome] = useState('');
+  const [sala, setSala] = useState('');
   const router = useRouter();
 
-  const handleJoin = (e) => {
+  function entrarNoChat(e) {
     e.preventDefault();
-    if (!name.trim()) return;
 
-    // Define uma sala padrão caso o usuário não informe
-    const finalRoom = roomCode.trim() || 'GERAL';
+    const nomeFinal = nome.trim();
+    const salaFinal = (sala.trim() || 'GERAL').toUpperCase();
 
-    // Repassa os dados por URL params
-    router.push(`/chat?room=${encodeURIComponent(finalRoom)}&name=${encodeURIComponent(name.trim())}`);
-  };
+    if (!nomeFinal) {
+      return;
+    }
+
+    router.push(`/chat?sala=${encodeURIComponent(salaFinal)}&nome=${encodeURIComponent(nomeFinal)}`);
+  }
 
   return (
     <main className="d-flex align-items-center justify-content-center min-vh-100 p-3 bg-midnight">
@@ -30,7 +33,7 @@ export default function Home() {
           <p className="text-secondary small">Comunicação em tempo real em alta velocidade.</p>
         </div>
 
-        <form onSubmit={handleJoin} className="d-flex flex-column gap-3">
+        <form onSubmit={entrarNoChat} className="d-flex flex-column gap-3">
           <div>
             <label htmlFor="name" className="form-label text-light small fw-medium mb-1">
               Seu nome <span className="text-neon">*</span>
@@ -39,8 +42,8 @@ export default function Home() {
               type="text"
               id="name"
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
               className="form-control glass-input rounded-3 py-2 px-3"
               placeholder="Como quer ser chamado?"
             />
@@ -53,9 +56,9 @@ export default function Home() {
             <input
               type="text"
               id="roomCode"
-              value={roomCode}
-              onChange={(e) => setRoomCode(e.target.value)}
-              className="form-control glass-input rounded-3 py-2 px-3 text-uppercase"
+              value={sala}
+              onChange={(e) => setSala(e.target.value.toUpperCase())}
+              className="form-control glass-input rounded-3 py-2 px-3"
               placeholder="Ex: TURMA01"
             />
           </div>
@@ -67,6 +70,13 @@ export default function Home() {
             Entrar no Chat
           </button>
         </form>
+
+        <Link
+          href="/apresentacao"
+          className="btn btn-outline-light rounded-3 py-3 mt-3 w-100 border-secondary-subtle"
+        >
+          Ver página de apresentação
+        </Link>
       </div>
     </main>
   );

@@ -1,16 +1,15 @@
-import { Suspense } from 'react';
+import { redirect } from 'next/navigation';
 import ChatRoom from './ChatRoom';
 
-export default function ChatPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-vh-100 bg-midnight d-flex align-items-center justify-content-center">
-        <div className="spinner-border text-neon" role="status">
-          <span className="visually-hidden">Carregando...</span>
-        </div>
-      </div>
-    }>
-      <ChatRoom />
-    </Suspense>
-  );
+export default async function ChatPage({ searchParams }) {
+  const busca = await searchParams;
+
+  const sala = typeof busca.sala === 'string' ? busca.sala.trim().toUpperCase() : '';
+  const nome = typeof busca.nome === 'string' ? busca.nome.trim() : '';
+
+  if (!sala || !nome) {
+    redirect('/');
+  }
+
+  return <ChatRoom sala={sala} nome={nome} />;
 }
