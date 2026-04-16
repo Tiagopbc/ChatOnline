@@ -265,43 +265,6 @@ export default function ApresentacaoPage() {
             ))}
           </div>
         </section>
-
-        <section className="glass-card rounded-4 p-4 p-md-5">
-          <div className="row g-4">
-            <div className="col-lg-7">
-              <p className="text-neon text-uppercase small fw-semibold mb-1">Fala sugerida</p>
-              <h2 className="h3 fw-bold mb-3">Resumo para falar ao professor</h2>
-              <p className="text-secondary mb-3">
-                Este projeto é um chat em tempo real feito com Next.js, React e Supabase. Primeiro, o
-                usuário informa o nome e a sala. Depois, o sistema valida esses dados e abre a sala do chat.
-              </p>
-              <p className="text-secondary mb-0">
-                Dentro da sala, as mensagens são buscadas no banco de dados e o Supabase Realtime atualiza a
-                interface automaticamente quando uma nova mensagem é enviada. Assim, o chat funciona sem precisar
-                recarregar a página.
-              </p>
-            </div>
-
-            <div className="col-lg-5">
-              <div
-                className="rounded-4 p-4 h-100"
-                style={{
-                  background: 'rgba(2, 6, 23, 0.55)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                }}
-              >
-                <p className="small text-secondary text-uppercase fw-semibold mb-3">Ordem sugerida</p>
-                <div className="d-flex flex-column gap-3">
-                  <div>1. Mostrar a home.</div>
-                  <div>2. Explicar o envio de nome e sala.</div>
-                  <div>3. Abrir a sala do chat.</div>
-                  <div>4. Mostrar o trecho do tempo real.</div>
-                  <div>5. Concluir com o papel do Supabase.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   );
