@@ -132,15 +132,13 @@ export default function ApresentacaoPage() {
         <section className="glass-card rounded-4 p-4 p-md-5 mb-4 mb-md-5 shadow-lg">
           <div className="row g-4 align-items-center">
             <div className="col-lg-8">
-              <span className="text-uppercase small fw-semibold text-neon">Projeto da faculdade</span>
+              <span className="text-uppercase small fw-semibold text-neon">Projeto Programação para Wweb</span>
               <h1 className="display-5 fw-bold mt-2 mb-3">Midnight Chat</h1>
               <p className="fs-5 text-light-emphasis mb-3">
                 Um chat em tempo real feito para demonstrar navegação, estado, integração com banco de dados
                 e atualização instantânea de mensagens.
               </p>
-              <p className="text-secondary mb-0">
-                Esta página serve como apoio visual para a apresentação e resume as partes mais importantes do projeto.
-              </p>
+
             </div>
 
             <div className="col-lg-4">
@@ -172,7 +170,7 @@ export default function ApresentacaoPage() {
 
           <div className="d-flex flex-column flex-sm-row gap-3 mt-4">
             <Link href="/" className="btn btn-neon rounded-3 px-4 py-3">
-              Abrir demonstração
+              Abrir chat
             </Link>
             <a href="#codigo" className="btn btn-outline-light rounded-3 px-4 py-3 border-secondary-subtle">
               Ver trechos do código
@@ -221,7 +219,7 @@ export default function ApresentacaoPage() {
         <section className="mb-4 mb-md-5">
           <div className="mb-3">
             <p className="text-neon text-uppercase small fw-semibold mb-1">Apresentação</p>
-            <h2 className="h3 fw-bold mb-0">Partes do código que vale a pena mostrar</h2>
+            <h2 className="h3 fw-bold mb-0">Arquivos e suas funções principais</h2>
           </div>
 
           <div className="row g-3">
@@ -239,7 +237,7 @@ export default function ApresentacaoPage() {
         <section id="codigo" className="mb-4 mb-md-5">
           <div className="mb-3">
             <p className="text-neon text-uppercase small fw-semibold mb-1">Código</p>
-            <h2 className="h3 fw-bold mb-0">Trechos simples para explicar</h2>
+            <h2 className="h3 fw-bold mb-0">Trechos do código</h2>
           </div>
 
           <div className="d-flex flex-column gap-4">
