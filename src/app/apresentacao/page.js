@@ -1,5 +1,136 @@
 import Link from 'next/link';
 
+const palavrasReservadas = new Set([
+  'async',
+  'await',
+  'const',
+  'default',
+  'export',
+  'function',
+  'if',
+  'return',
+]);
+
+const valoresEspeciais = new Set(['false', 'null', 'true', 'undefined']);
+
+function tokenizarLinha(linha) {
+  const tokens = [];
+  let indice = 0;
+
+  while (indice < linha.length) {
+    const trechoAtual = linha.slice(indice);
+
+    const espacos = trechoAtual.match(/^\s+/);
+    if (espacos) {
+      tokens.push({ tipo: 'plain', valor: espacos[0] });
+      indice += espacos[0].length;
+      continue;
+    }
+
+    const comentario = trechoAtual.match(/^\/\/.*/);
+    if (comentario) {
+      tokens.push({ tipo: 'comment', valor: comentario[0] });
+      break;
+    }
+
+    const texto = trechoAtual.match(/^`(?:\\.|[^`])*`|^"(?:\\.|[^"])*"|^'(?:\\.|[^'])*'/);
+    if (texto) {
+      tokens.push({ tipo: 'string', valor: texto[0] });
+      indice += texto[0].length;
+      continue;
+    }
+
+    const operadorComposto = trechoAtual.match(/^(===|!==|=>|\|\||&&|<=|>=|==|!=)/);
+    if (operadorComposto) {
+      tokens.push({ tipo: 'operator', valor: operadorComposto[0] });
+      indice += operadorComposto[0].length;
+      continue;
+    }
+
+    const numero = trechoAtual.match(/^\d+/);
+    if (numero) {
+      tokens.push({ tipo: 'number', valor: numero[0] });
+      indice += numero[0].length;
+      continue;
+    }
+
+    const pontuacao = trechoAtual.match(/^[{}()[\].,;:?]/);
+    if (pontuacao) {
+      tokens.push({ tipo: 'punctuation', valor: pontuacao[0] });
+      indice += pontuacao[0].length;
+      continue;
+    }
+
+    const operador = trechoAtual.match(/^[=+\-*/%<>!]/);
+    if (operador) {
+      tokens.push({ tipo: 'operator', valor: operador[0] });
+      indice += operador[0].length;
+      continue;
+    }
+
+    const identificador = trechoAtual.match(/^[A-Za-z_$][\w$]*/);
+    if (identificador) {
+      const valor = identificador[0];
+      const ultimoCaractereAntes = linha.slice(0, indice).trimEnd().at(-1);
+      const proximoCaractere = trechoAtual.slice(valor.length).trimStart().at(0);
+      let tipo = 'plain';
+
+      if (palavrasReservadas.has(valor)) {
+        tipo = 'keyword';
+      } else if (valoresEspeciais.has(valor)) {
+        tipo = 'literal';
+      } else if (ultimoCaractereAntes === '.') {
+        tipo = 'method';
+      } else if (proximoCaractere === '(') {
+        tipo = 'function';
+      } else if (valor.startsWith('set')) {
+        tipo = 'function';
+      }
+
+      tokens.push({ tipo, valor });
+      indice += valor.length;
+      continue;
+    }
+
+    tokens.push({ tipo: 'plain', valor: linha[indice] });
+    indice += 1;
+  }
+
+  return tokens;
+}
+
+function BlocoDeCodigo({ codigo }) {
+  const linhas = codigo.trim().split('\n');
+
+  return (
+    <div className="code-window">
+      <div className="code-window-bar">
+        <div className="d-flex align-items-center gap-2">
+          <span className="code-dot code-dot-red"></span>
+          <span className="code-dot code-dot-yellow"></span>
+          <span className="code-dot code-dot-green"></span>
+        </div>
+        <span className="code-window-title">JavaScript</span>
+      </div>
+
+      <div className="code-window-body">
+        {linhas.map((linha, indice) => (
+          <div key={`${indice}-${linha}`} className="code-line">
+            <span className="code-line-number">{String(indice + 1).padStart(2, '0')}</span>
+            <span className="code-line-content">
+              {tokenizarLinha(linha).map((token, tokenIndex) => (
+                <span key={`${indice}-${tokenIndex}`} className={`code-token code-token-${token.tipo}`}>
+                  {token.valor}
+                </span>
+              ))}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const tecnologias = [
   {
     nome: 'Next.js',
@@ -245,22 +376,7 @@ export default function ApresentacaoPage() {
               <article key={trecho.titulo} className="glass-card rounded-4 p-4">
                 <h3 className="h5 fw-bold mb-2">{trecho.titulo}</h3>
                 <p className="text-secondary mb-3">{trecho.explicacao}</p>
-                <pre
-                  className="mb-0"
-                  style={{
-                    background: 'rgba(2, 6, 23, 0.78)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '1rem',
-                    color: '#dbeafe',
-                    fontFamily: 'var(--font-geist-mono), monospace',
-                    fontSize: '0.9rem',
-                    overflowX: 'auto',
-                    padding: '1rem',
-                    whiteSpace: 'pre-wrap',
-                  }}
-                >
-                  <code>{trecho.codigo}</code>
-                </pre>
+                <BlocoDeCodigo codigo={trecho.codigo} />
               </article>
             ))}
           </div>
