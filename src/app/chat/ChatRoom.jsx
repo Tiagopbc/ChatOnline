@@ -4,13 +4,26 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../lib/supabase';
 
-export default function ChatRoom({ sala, nome }) {
+export default function ChatRoom({ sala }) {
   const router = useRouter();
+  const [nome, setNome] = useState(null);
   const [mensagens, setMensagens] = useState([]);
   const [novaMensagem, setNovaMensagem] = useState('');
   const fimDasMensagensRef = useRef(null);
 
   useEffect(() => {
+    const nomeSalvo = sessionStorage.getItem('midnight_username');
+    if (!nomeSalvo) {
+      router.push(`/?sala=${encodeURIComponent(sala)}`);
+    } else {
+      setNome(nomeSalvo);
+    }
+  }, [router, sala]);
+
+  useEffect(() => {
+    if (!nome) return;
+
+
     async function buscarMensagens() {
       const { data } = await supabase
         .from('messages')
@@ -41,10 +54,9 @@ export default function ChatRoom({ sala, nome }) {
       )
       .subscribe();
 
-    return () => {
       supabase.removeChannel(channel);
     };
-  }, [sala]);
+  }, [sala, nome]);
 
   useEffect(() => {
     fimDasMensagensRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -65,6 +77,16 @@ export default function ChatRoom({ sala, nome }) {
       user_name: nome,
       content: conteudo,
     });
+  }
+
+  if (!nome) {
+    return (
+      <div className="bg-midnight vh-100 d-flex flex-column align-items-center justify-content-center">
+        <div className="spinner-border text-neon" role="status">
+          <span className="visually-hidden">Carregando...</span>
+        </div>
+      </div>
+    );
   }
 
   return (

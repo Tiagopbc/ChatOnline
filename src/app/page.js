@@ -1,13 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const [nome, setNome] = useState('');
   const [sala, setSala] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlSala = params.get('sala');
+      if (urlSala) {
+        setSala(urlSala.toUpperCase());
+      }
+    }
+  }, []);
 
   function entrarNoChat(e) {
     e.preventDefault();
@@ -19,7 +29,9 @@ export default function Home() {
       return;
     }
 
-    router.push(`/chat?sala=${encodeURIComponent(salaFinal)}&nome=${encodeURIComponent(nomeFinal)}`);
+    sessionStorage.setItem('midnight_username', nomeFinal);
+
+    router.push(`/chat?sala=${encodeURIComponent(salaFinal)}`);
   }
 
   return (

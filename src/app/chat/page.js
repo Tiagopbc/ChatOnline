@@ -5,11 +5,10 @@ export default async function ChatPage({ searchParams }) {
   const busca = await searchParams;
 
   const sala = typeof busca.sala === 'string' ? busca.sala.trim().toUpperCase() : '';
-  const nome = typeof busca.nome === 'string' ? busca.nome.trim() : '';
 
-  if (!sala || !nome) {
+  if (!sala) {
     redirect('/');
   }
 
-  return <ChatRoom sala={sala} nome={nome} />;
+  return <ChatRoom sala={sala} />;
 }
