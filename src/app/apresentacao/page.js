@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import FadeIn from './FadeIn';
+import ScrollToTop from './ScrollToTop';
 
 const palavrasReservadas = new Set([
   'async',
@@ -260,6 +262,7 @@ export default function ApresentacaoPage() {
       }}
     >
       <div className="container" style={{ maxWidth: '1100px' }}>
+        <FadeIn>
         <section className="glass-card rounded-4 p-4 p-md-5 mb-4 mb-md-5 shadow-lg">
           <div className="row g-4 align-items-center">
             <div className="col-lg-8">
@@ -308,7 +311,9 @@ export default function ApresentacaoPage() {
             </a>
           </div>
         </section>
+        </FadeIn>
 
+        <FadeIn delay={0.2}>
         <section className="mb-4 mb-md-5">
           <div className="d-flex justify-content-between align-items-end mb-3">
             <div>
@@ -328,7 +333,9 @@ export default function ApresentacaoPage() {
             ))}
           </div>
         </section>
+        </FadeIn>
 
+        <FadeIn delay={0.3}>
         <section className="mb-4 mb-md-5">
           <div className="mb-3">
             <p className="text-neon text-uppercase small fw-semibold mb-1">Fluxo</p>
@@ -346,7 +353,9 @@ export default function ApresentacaoPage() {
             ))}
           </div>
         </section>
+        </FadeIn>
 
+        <FadeIn delay={0.4}>
         <section className="mb-4 mb-md-5">
           <div className="mb-3">
             <p className="text-neon text-uppercase small fw-semibold mb-1">Apresentação</p>
@@ -364,7 +373,9 @@ export default function ApresentacaoPage() {
             ))}
           </div>
         </section>
+        </FadeIn>
 
+        <FadeIn delay={0.5}>
         <section id="codigo" className="mb-4 mb-md-5">
           <div className="mb-3">
             <p className="text-neon text-uppercase small fw-semibold mb-1">Código</p>
@@ -381,7 +392,9 @@ export default function ApresentacaoPage() {
             ))}
           </div>
         </section>
+        </FadeIn>
       </div>
+      <ScrollToTop />
     </main>
   );
 }
