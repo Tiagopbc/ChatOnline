@@ -263,135 +263,135 @@ export default function ApresentacaoPage() {
     >
       <div className="container" style={{ maxWidth: '1100px' }}>
         <FadeIn>
-        <section className="glass-card rounded-4 p-4 p-md-5 mb-4 mb-md-5 shadow-lg">
-          <div className="row g-4 align-items-center">
-            <div className="col-lg-8">
-              <span className="text-uppercase small fw-semibold text-neon">Projeto Programação para Wweb</span>
-              <h1 className="display-5 fw-bold mt-2 mb-3">Midnight Chat</h1>
-              <p className="fs-5 text-light-emphasis mb-3">
-                Um chat em tempo real feito para demonstrar navegação, estado, integração com banco de dados
-                e atualização instantânea de mensagens.
-              </p>
+          <section className="glass-card rounded-4 p-4 p-md-5 mb-4 mb-md-5 shadow-lg">
+            <div className="row g-4 align-items-center">
+              <div className="col-lg-8">
+                <span className="text-uppercase small fw-semibold text-neon">Projeto de Programação para Wweb</span>
+                <h1 className="display-5 fw-bold mt-2 mb-3">Midnight Chat</h1>
+                <p className="fs-5 text-light-emphasis mb-3">
+                  Um chat em tempo real feito para demonstrar navegação, estado, integração com banco de dados
+                  e atualização instantânea de mensagens.
+                </p>
 
-            </div>
+              </div>
 
-            <div className="col-lg-4">
-              <div
-                className="rounded-4 p-4 h-100"
-                style={{
-                  background: 'rgba(2, 6, 23, 0.55)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                }}
-              >
-                <p className="small text-secondary text-uppercase fw-semibold mb-3">Resumo rápido</p>
-                <div className="d-flex flex-column gap-3">
-                  <div>
-                    <div className="text-neon fw-semibold">Objetivo</div>
-                    <div className="text-light">Permitir conversa por salas em tempo real.</div>
-                  </div>
-                  <div>
-                    <div className="text-neon fw-semibold">Destaque técnico</div>
-                    <div className="text-light">Supabase Realtime + App Router do Next.js.</div>
-                  </div>
-                  <div>
-                    <div className="text-neon fw-semibold">Estrutura</div>
-                    <div className="text-light">Home, validação da rota, sala do chat e conexão com banco.</div>
+              <div className="col-lg-4">
+                <div
+                  className="rounded-4 p-4 h-100"
+                  style={{
+                    background: 'rgba(2, 6, 23, 0.55)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                  }}
+                >
+                  <p className="small text-secondary text-uppercase fw-semibold mb-3">Resumo rápido</p>
+                  <div className="d-flex flex-column gap-3">
+                    <div>
+                      <div className="text-neon fw-semibold">Objetivo</div>
+                      <div className="text-light">Permitir conversa por salas em tempo real.</div>
+                    </div>
+                    <div>
+                      <div className="text-neon fw-semibold">Destaque técnico</div>
+                      <div className="text-light">Supabase Realtime + App Router do Next.js.</div>
+                    </div>
+                    <div>
+                      <div className="text-neon fw-semibold">Estrutura</div>
+                      <div className="text-light">Home, validação da rota, sala do chat e conexão com banco.</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="d-flex flex-column flex-sm-row gap-3 mt-4">
-            <Link href="/" className="btn btn-neon rounded-3 px-4 py-3">
-              Abrir chat
-            </Link>
-            <a href="#codigo" className="btn btn-outline-light rounded-3 px-4 py-3 border-secondary-subtle">
-              Ver trechos do código
-            </a>
-          </div>
-        </section>
+            <div className="d-flex flex-column flex-sm-row gap-3 mt-4">
+              <Link href="/" className="btn btn-neon rounded-3 px-4 py-3">
+                Abrir chat
+              </Link>
+              <a href="#codigo" className="btn btn-outline-light rounded-3 px-4 py-3 border-secondary-subtle">
+                Ver trechos do código
+              </a>
+            </div>
+          </section>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-        <section className="mb-4 mb-md-5">
-          <div className="d-flex justify-content-between align-items-end mb-3">
-            <div>
-              <p className="text-neon text-uppercase small fw-semibold mb-1">Tecnologias</p>
-              <h2 className="h3 fw-bold mb-0">O que usamos no projeto</h2>
-            </div>
-          </div>
-
-          <div className="row g-3">
-            {tecnologias.map((tecnologia) => (
-              <div key={tecnologia.nome} className="col-md-6 col-xl-3">
-                <div className="glass-card rounded-4 p-4 h-100">
-                  <h3 className="h5 fw-bold mb-2">{tecnologia.nome}</h3>
-                  <p className="text-secondary mb-0">{tecnologia.descricao}</p>
-                </div>
+          <section className="mb-4 mb-md-5">
+            <div className="d-flex justify-content-between align-items-end mb-3">
+              <div>
+                <p className="text-neon text-uppercase small fw-semibold mb-1">Tecnologias</p>
+                <h2 className="h3 fw-bold mb-0">O que usamos no projeto</h2>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+
+            <div className="row g-3">
+              {tecnologias.map((tecnologia) => (
+                <div key={tecnologia.nome} className="col-md-6 col-xl-3">
+                  <div className="glass-card rounded-4 p-4 h-100">
+                    <h3 className="h5 fw-bold mb-2">{tecnologia.nome}</h3>
+                    <p className="text-secondary mb-0">{tecnologia.descricao}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         </FadeIn>
 
         <FadeIn delay={0.3}>
-        <section className="mb-4 mb-md-5">
-          <div className="mb-3">
-            <p className="text-neon text-uppercase small fw-semibold mb-1">Fluxo</p>
-            <h2 className="h3 fw-bold mb-0">Como o sistema funciona</h2>
-          </div>
+          <section className="mb-4 mb-md-5">
+            <div className="mb-3">
+              <p className="text-neon text-uppercase small fw-semibold mb-1">Fluxo</p>
+              <h2 className="h3 fw-bold mb-0">Como o sistema funciona</h2>
+            </div>
 
-          <div className="row g-3">
-            {etapas.map((etapa) => (
-              <div key={etapa.titulo} className="col-md-6">
-                <div className="glass-card rounded-4 p-4 h-100">
-                  <h3 className="h5 fw-bold mb-2">{etapa.titulo}</h3>
-                  <p className="text-secondary mb-0">{etapa.descricao}</p>
+            <div className="row g-3">
+              {etapas.map((etapa) => (
+                <div key={etapa.titulo} className="col-md-6">
+                  <div className="glass-card rounded-4 p-4 h-100">
+                    <h3 className="h5 fw-bold mb-2">{etapa.titulo}</h3>
+                    <p className="text-secondary mb-0">{etapa.descricao}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
         </FadeIn>
 
         <FadeIn delay={0.4}>
-        <section className="mb-4 mb-md-5">
-          <div className="mb-3">
-            <p className="text-neon text-uppercase small fw-semibold mb-1">Apresentação</p>
-            <h2 className="h3 fw-bold mb-0">Arquivos e suas funções principais</h2>
-          </div>
+          <section className="mb-4 mb-md-5">
+            <div className="mb-3">
+              <p className="text-neon text-uppercase small fw-semibold mb-1">Apresentação</p>
+              <h2 className="h3 fw-bold mb-0">Arquivos e suas funções principais</h2>
+            </div>
 
-          <div className="row g-3">
-            {arquivos.map((arquivo) => (
-              <div key={arquivo.caminho} className="col-md-6">
-                <div className="glass-card rounded-4 p-4 h-100">
-                  <div className="small text-neon fw-semibold mb-2">{arquivo.caminho}</div>
-                  <p className="text-secondary mb-0">{arquivo.motivo}</p>
+            <div className="row g-3">
+              {arquivos.map((arquivo) => (
+                <div key={arquivo.caminho} className="col-md-6">
+                  <div className="glass-card rounded-4 p-4 h-100">
+                    <div className="small text-neon fw-semibold mb-2">{arquivo.caminho}</div>
+                    <p className="text-secondary mb-0">{arquivo.motivo}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
         </FadeIn>
 
         <FadeIn delay={0.5}>
-        <section id="codigo" className="mb-4 mb-md-5">
-          <div className="mb-3">
-            <p className="text-neon text-uppercase small fw-semibold mb-1">Código</p>
-            <h2 className="h3 fw-bold mb-0">Trechos do código</h2>
-          </div>
+          <section id="codigo" className="mb-4 mb-md-5">
+            <div className="mb-3">
+              <p className="text-neon text-uppercase small fw-semibold mb-1">Código</p>
+              <h2 className="h3 fw-bold mb-0">Trechos do código</h2>
+            </div>
 
-          <div className="d-flex flex-column gap-4">
-            {trechos.map((trecho) => (
-              <article key={trecho.titulo} className="glass-card rounded-4 p-4">
-                <h3 className="h5 fw-bold mb-2">{trecho.titulo}</h3>
-                <p className="text-secondary mb-3">{trecho.explicacao}</p>
-                <BlocoDeCodigo codigo={trecho.codigo} />
-              </article>
-            ))}
-          </div>
-        </section>
+            <div className="d-flex flex-column gap-4">
+              {trechos.map((trecho) => (
+                <article key={trecho.titulo} className="glass-card rounded-4 p-4">
+                  <h3 className="h5 fw-bold mb-2">{trecho.titulo}</h3>
+                  <p className="text-secondary mb-3">{trecho.explicacao}</p>
+                  <BlocoDeCodigo codigo={trecho.codigo} />
+                </article>
+              ))}
+            </div>
+          </section>
         </FadeIn>
       </div>
       <ScrollToTop />
