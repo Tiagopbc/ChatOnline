@@ -69,9 +69,9 @@ export default function ChatRoom({ sala, nome }) {
 
   return (
     <div className="bg-midnight vh-100 d-flex flex-column align-items-center overflow-hidden py-1 py-md-4 px-1 px-md-3">
-      
+
       <div className="w-100 h-100 d-flex flex-column glass-card rounded-md-4 shadow-lg overflow-hidden" style={{ maxWidth: '900px' }}>
-        
+
         <header className="p-3 px-4 border-bottom border-secondary d-flex justify-content-between align-items-center text-white" style={{ backgroundColor: 'rgba(2, 6, 23, 0.4)' }}>
           <div>
             <h5 className="m-0 fw-bold">Sala <span className="text-neon">#{sala}</span></h5>
