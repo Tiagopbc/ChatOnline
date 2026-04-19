@@ -14,6 +14,7 @@ export default function Home() {
       const params = new URLSearchParams(window.location.search);
       const urlSala = params.get('sala');
       if (urlSala) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSala(urlSala.toUpperCase());
       }
     }
